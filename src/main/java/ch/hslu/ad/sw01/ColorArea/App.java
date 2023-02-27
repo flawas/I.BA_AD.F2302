@@ -41,5 +41,6 @@ public class App {
             colorArea(x, y + 1, fillColor, outsideColor);
             colorArea(x - 1, y, fillColor, outsideColor);
             colorArea(x, y - 1, fillColor, outsideColor);
-        } }
+        }
+    }
 }

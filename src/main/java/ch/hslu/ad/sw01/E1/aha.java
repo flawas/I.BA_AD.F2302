@@ -31,16 +31,16 @@ public class aha {
 
     public static void task1(){
         counter.setCountPlusOne();
-        Log.info("Task 1 ausgeführt.");
+        //Log.info("Task 1 ausgeführt.");
     }
 
     public static void task2(){
         counter.setCountPlusOne();
-        Log.info("Task 2 ausgeführt.");
+        //Log.info("Task 2 ausgeführt.");
     }
 
     public static void task3(){
         counter.setCountPlusOne();
-        Log.info("Task 3 ausgeführt.");
+        //Log.info("Task 3 ausgeführt.");
     }
 }

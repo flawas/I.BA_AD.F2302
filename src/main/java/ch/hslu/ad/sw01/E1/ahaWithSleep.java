@@ -10,7 +10,9 @@ public class ahaWithSleep {
     private static ahaCounter counter = new ahaCounter();
 
     public static void main(String[] args) throws InterruptedException {
-        task(50);
+        task(10);
+        task(20);
+        task(40);
     }
 
     public static void task(final int n) throws InterruptedException {
@@ -31,19 +33,19 @@ public class ahaWithSleep {
 
     public static void task1() throws InterruptedException {
         counter.setCountPlusOne();
-        Thread.sleep(5);
-        Log.info("Task 1 ausgeführt.");
+        Thread.sleep(1);
+        //Log.info("Task 1 ausgeführt.");
     }
 
     public static void task2() throws InterruptedException {
         counter.setCountPlusOne();
-        Thread.sleep(5);
-        Log.info("Task 2 ausgeführt.");
+        Thread.sleep(1);
+        //Log.info("Task 2 ausgeführt.");
     }
 
     public static void task3() throws InterruptedException {
         counter.setCountPlusOne();
-        Thread.sleep(5);
-        Log.info("Task 3 ausgeführt.");
+        Thread.sleep(1);
+        //Log.info("Task 3 ausgeführt.");
     }
 }

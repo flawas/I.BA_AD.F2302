@@ -3,8 +3,9 @@
 ## Modulbeschrieb
 Fundierte Einführung in grundlegende Datenstrukturen und Algorithmen sowie in übergeordnete Prinzipien wie Iteration, Rekursion und Teile und Herrsche. In diesem Kontext wichtig ist auch die Parallelisierung, konkret die nebenläufige Programmierung mit Java. Das Modul vermittelt essentielle Grundlagen und befähigt zum praktischen Anwenden und Implementieren. Topics sind z.B. Listen, Bäume, Hashtabellen, weiter Sortier-, Such- und Graphenalgorithmen sowie aktuelle Java Frameworks.
 
-### Inhalt
-
+## Inhalt
+## SW01
+ 
 
 
 ## Zweck

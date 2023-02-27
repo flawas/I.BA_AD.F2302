@@ -7,7 +7,7 @@ public class Zahlen {
 
     private static final Logger Log = LogManager.getLogger();
     public static void main(String[] args) {
-        //System.out.println(checkSymmetric(701));
+        //System.out.println(checkSymmetric(010));
         System.out.println(findSymmetric(501));
     }
 
