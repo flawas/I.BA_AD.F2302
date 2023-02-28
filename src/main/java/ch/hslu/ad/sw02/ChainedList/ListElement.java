@@ -2,19 +2,26 @@ package ch.hslu.ad.sw02.ChainedList;
 
 public class ListElement {
 
+    String data;
     ListElement followingElement;
-    private boolean hasNextElement;
 
     public ListElement() {
         this.followingElement = null;
-        this.hasNextElement = false;
     }
 
-    public void setFollowingElement(ListElement followingElement){
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public ListElement getFollowingElement() {
+        return followingElement;
+    }
+
+    public void setFollowingElement(ListElement followingElement) {
         this.followingElement = followingElement;
-    }
-
-    public ListElement getFollowingElement(){
-        return this.followingElement;
     }
 }

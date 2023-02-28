@@ -1,42 +1,38 @@
 package ch.hslu.ad.sw02.ChainedList;
 
-import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class ChainedList {
+import java.awt.*;
 
-    ListElement head;
-    ListElement tail;
-    private int listSize;
+public class ChainedList extends ListElement {
+
+    private static final Logger Log = LogManager.getLogger();
+    private int chainedListSize;
 
     public ChainedList() {
-        this.listSize = 0;
-        this.head = new ListElement();
-        this.tail = new ListElement();
+        Log.info("Generation ChainedList: " + this);
+        this.chainedListSize = 0;
     }
 
-    public void newListElement(final ListElement newListElement){
-        this.listSize++;
-        this.getLastElement().setFollowingElement(newListElement);
+    public void newNode(ListElement listElement){
+        this.chainedListSize++;
+        Log.info("newNode: " + listElement);
+        Log.debug(this + " followingElement " + listElement);
+        setFollowingElement(listElement);
+        getLastElement();
     }
 
     public ListElement getLastElement(){
-        if(this.getListSize() == 0){
-            return this.head;
-        } else {
-            return this.head;
+        while(followingElement != null){
+            Log.info("getLastElement: " + followingElement);
+            return followingElement;
         }
+        Log.info("adf");
+        return followingElement;
     }
 
-
-    public int getListSize() {
-        return this.listSize;
-    }
-
-    public void setListSize(int listSize) {
-        this.listSize = listSize;
-    }
-
-    public void setListSizePlusOne(){
-        this.listSize = this.listSize + 1;
+    public int getSize(){
+        return chainedListSize;
     }
 }
