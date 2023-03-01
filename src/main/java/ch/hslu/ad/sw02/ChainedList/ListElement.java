@@ -5,16 +5,12 @@ public class ListElement {
     String data;
     ListElement followingElement;
 
-    public ListElement() {
+    public ListElement(String data) {
         this.followingElement = null;
+        this.data = data;
     }
-
     public String getData() {
         return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 
     public ListElement getFollowingElement() {

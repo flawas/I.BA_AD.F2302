@@ -4,35 +4,42 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.List;
 
-public class ChainedList extends ListElement {
+public class ChainedList {
 
     private static final Logger Log = LogManager.getLogger();
-    private int chainedListSize;
+
+    private ListElement firstElement;
+    private ListElement previousElement;
 
     public ChainedList() {
         Log.info("Generation ChainedList: " + this);
-        this.chainedListSize = 0;
     }
 
     public void newNode(ListElement listElement){
-        this.chainedListSize++;
-        Log.info("newNode: " + listElement);
-        Log.debug(this + " followingElement " + listElement);
-        setFollowingElement(listElement);
-        getLastElement();
+        if(this.previousElement == null){
+            this.firstElement = listElement;
+            this.previousElement = listElement;
+        } else {
+            this.previousElement.setFollowingElement(listElement);
+            this.previousElement = listElement;
+        }
     }
 
     public ListElement getLastElement(){
-        while(followingElement != null){
-            Log.info("getLastElement: " + followingElement);
-            return followingElement;
+        ListElement element = this.firstElement;
+        while(element.getFollowingElement() != null){
+            element = element.getFollowingElement();
         }
-        Log.info("adf");
-        return followingElement;
+        return element;
     }
 
-    public int getSize(){
-        return chainedListSize;
+    public ListElement getLastElementRec(ListElement element){
+        Log.debug(element.getData());
+        if(element.getFollowingElement() != null){
+            return this.getLastElementRec(element.getFollowingElement());
+        }
+        return element;
     }
 }

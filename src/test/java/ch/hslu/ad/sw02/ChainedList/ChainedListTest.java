@@ -10,25 +10,27 @@ class ChainedListTest {
     @Test
     void newNode() {
         ChainedList chainedList = new ChainedList();
-        chainedList.newNode(new ListElement());
+        chainedList.newNode(new ListElement("Test"));
         assertEquals(1, chainedList.getLastElement());
     }
 
     @Test
     void getLastElement() {
         ChainedList chainedList = new ChainedList();
-        chainedList.newNode(new ListElement());
-        chainedList.newNode(new ListElement());
-        chainedList.newNode(new ListElement());
-        assertEquals(1, chainedList.getLastElement());
+        chainedList.newNode(new ListElement("Flavio"));
+        chainedList.newNode(new ListElement("Linus"));
+        chainedList.newNode(new ListElement("Claudio"));
+        assertEquals("Claudio", chainedList.getLastElement().getData());
     }
 
     @Test
-    void getSize() {
+    void getLastElementRec(){
         ChainedList chainedList = new ChainedList();
-        chainedList.newNode(new ListElement());
-        chainedList.newNode(new ListElement());
-        chainedList.newNode(new ListElement());
-        assertEquals(3, chainedList.getSize());
+        ListElement firstElement = new ListElement("Flavio");
+        chainedList.newNode(firstElement);
+        chainedList.newNode(new ListElement("Linus"));
+        chainedList.newNode(new ListElement("Claudio"));
+        assertEquals("Claudio", chainedList.getLastElementRec(firstElement).getData());
     }
+
 }
