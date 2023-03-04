@@ -30,9 +30,11 @@ public class ListElement {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ListElement element)) return false;
+        if (!(o instanceof ListElement element)) {
+            return false;
+        }
 
-        return getData().equals(element.getData());
+        return getData().equals(element.data);
     }
 
     @Override

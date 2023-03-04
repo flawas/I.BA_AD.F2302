@@ -90,19 +90,43 @@ public class ChainedList {
         return oldElement;
     }
 
+    public boolean elementExists(final ListElement searchElement){
+        ListElement element = this.firstElement;
+        for(int i = 0; i < getChainedListSize();i++){
+            if(element.equals(searchElement)){
+                Log.error("Gesuchter Node: " + element.getData() + " existiert!");
+                return true;
+            } else {
+                element = element.getFollowingElement();
+            }
+        }
+        return false;
+    }
+
     public void removeElement(final ListElement removeElement){
+
         // First Element
         if(removeElement.equals(this.firstElement)){
-            Log.debug("Erster Node soll gelöscht werden.");
+            Log.debug("Erster Node soll gelöscht werden." + this.firstElement.getData());
             Log.info("Erster Node gelöscht: " + this.firstElement.getData());
             getFirstElementAndRemove();
+            return;
         }
 
-        ListElement lastElement = getLastElement();
+        ListElement lastElement = this.getLastElement();
         // End Element
         if(removeElement.equals(lastElement)) {
             Log.debug("Letzter Node soll gelöscht werden.");
             getPreviousElement(lastElement).setFollowingElementNull();
+            return;
+        }
+
+        // Check if Element exists
+        if(elementExists(removeElement) == false){
+            Log.error("Element: " + removeElement.getData() + " exisitert nicht!");
+            return;
+        } else {
+            Log.info("Element " + removeElement.getData() + " existiert!");
         }
 
         // Any Element
@@ -111,6 +135,7 @@ public class ChainedList {
             ListElement followingElement = removeElement.getFollowingElement();
             previousElement.setFollowingElement(followingElement);
         }
+
     }
 
 }

@@ -3,7 +3,10 @@ package ch.hslu.ad.sw02.ChainedList;
 import com.sun.net.httpserver.Filter;
 import net.bytebuddy.asm.MemberSubstitution;
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,7 +66,7 @@ class ChainedListTest {
         chainedList.newNode(new ListElement("Test 2"));
         chainedList.newNode(new ListElement("Test 3"));
         chainedList.removeElement(removeElement);
-        assertEquals(3, chainedList.getChainedListSize());
+        assertEquals(4, chainedList.getChainedListSize());
     }
 
     @Test
@@ -77,7 +80,7 @@ class ChainedListTest {
         chainedList.newNode(removeElement);
         chainedList.removeElement(removeElement);
         assertEquals(3, chainedList.getChainedListSize());
-        assertEquals(lastNewElement.getData(), chainedList.getLastElement().getData());
+        assertEquals(lastNewElement, chainedList.getLastElement());
     }
 
     @Test
@@ -103,9 +106,8 @@ class ChainedListTest {
         chainedList.newNode(new ListElement("Test 1"));
         chainedList.newNode(new ListElement("Test 2"));
         chainedList.newNode(new ListElement("Test 3"));
-        ListElement removeElement = new ListElement("Test zu löschen");
-        chainedList.removeElement(removeElement);
-        assertEquals(1, chainedList.getChainedListSize());
+        chainedList.removeElement(new ListElement("Test 4"));
+        assertEquals(3, chainedList.getChainedListSize());
     }
 
     @Test
