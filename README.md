@@ -3,10 +3,26 @@
 ## Modulbeschrieb
 Fundierte Einführung in grundlegende Datenstrukturen und Algorithmen sowie in übergeordnete Prinzipien wie Iteration, Rekursion und Teile und Herrsche. In diesem Kontext wichtig ist auch die Parallelisierung, konkret die nebenläufige Programmierung mit Java. Das Modul vermittelt essentielle Grundlagen und befähigt zum praktischen Anwenden und Implementieren. Topics sind z.B. Listen, Bäume, Hashtabellen, weiter Sortier-, Such- und Graphenalgorithmen sowie aktuelle Java Frameworks.
 
+## Authors
+
+- [@flawas](https://www.github.com/flawas)
+
+
+
 ## Inhalt
 ## SW01
- 
+Übungen zu folgenden Inahlten:
+- Einführungsübung E1 (aha-Klaasen) und GGT berechnen
+- Ackermann-Zahlen berechnen 
+- ColorArea Übung
+- Fibonacci Zahlen berechnen
+- Symmetrische Zahlen finden
 
+## SW02
+Übungen zu folgenden Inahlten:
+- ArrayStack erstellen
+- Chained List erstellen
+- Queue erstellen
 
 ## Zweck
 Dieses Projekt dient in den Modulen OOP/PLAB, PRG, AD, VSK, SWDE und SWDA als 

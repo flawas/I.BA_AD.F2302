@@ -7,8 +7,10 @@ package ch.hslu.ad.sw02.queue;
 public class QueueElement {
 
     private char data;
+    private QueueElement followingElement;
+    private QueueElement previousElement;
 
-    public QueueElement(char data) {
+    public QueueElement(final char data) {
         this.data = data;
     }
 
@@ -21,13 +23,29 @@ public class QueueElement {
         return data;
     }
 
+    public QueueElement getFollowingElement(){
+        return followingElement;
+    }
+
+    public QueueElement getPreviousElement(){
+        return previousElement;
+    }
+
     /* --------------------------------------------------------------------------------
      * setter-Methoden
      * --------------------------------------------------------------------------------
      */
 
-    public void setData(char data) {
+    public void setData(final char data) {
         this.data = data;
+    }
+
+    public void setFollowingElement(QueueElement element){
+        this.followingElement = element;
+    }
+
+    public void setPreviousElement(final QueueElement element){
+        this.previousElement = element;
     }
 
     /* --------------------------------------------------------------------------------
@@ -45,5 +63,12 @@ public class QueueElement {
     @Override
     public int hashCode() {
         return getData();
+    }
+
+    @Override
+    public String toString() {
+        return "QueueElement{" +
+                "data=" + data +
+                '}';
     }
 }
