@@ -2,63 +2,48 @@
  * Copyright Flavio Waser (c) 2023.
  */
 
-package ch.hslu.ad.sw02.ArrayStack;
+package ch.hslu.ad.sw02.queue;
 
-public class ArrayStackElement {
+public class QueueElement {
 
-    private String data;
+    private char data;
 
-
-    public ArrayStackElement(final String data) {
+    public QueueElement(char data) {
         this.data = data;
     }
 
     /* --------------------------------------------------------------------------------
-     * Getter-Methoden
+     * getter-Methoden
      * --------------------------------------------------------------------------------
      */
 
-    public String getData() {
+    public char getData() {
         return data;
     }
 
     /* --------------------------------------------------------------------------------
-     * Setter-Methoden
+     * setter-Methoden
      * --------------------------------------------------------------------------------
      */
 
-    public void setData(String data) {
+    public void setData(char data) {
         this.data = data;
     }
 
-
     /* --------------------------------------------------------------------------------
-     * Hilfsmethoden
+     * Override-Methoden
      * --------------------------------------------------------------------------------
      */
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArrayStackElement)) return false;
+        if (!(o instanceof QueueElement that)) return false;
 
-        ArrayStackElement that = (ArrayStackElement) o;
-
-        if (getData() != null ? !getData().equals(that.getData()) : that.getData() != null) return false;
-
-        return true;
+        return getData() == that.getData();
     }
 
     @Override
     public int hashCode() {
-        int result = getData() != null ? getData().hashCode() : 0;
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ArrayStackElement{" +
-                "data='" + data + '\'' +
-                '}';
+        return getData();
     }
 }

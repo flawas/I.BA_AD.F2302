@@ -1,3 +1,7 @@
+/*
+ * Copyright Flavio Waser (c) 2023.
+ */
+
 package ch.hslu.ad.sw02.ChainedList;
 
 import org.apache.logging.log4j.LogManager;

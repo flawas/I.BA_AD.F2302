@@ -1,3 +1,7 @@
+/*
+ * Copyright Flavio Waser (c) 2023.
+ */
+
 package ch.hslu.ad.sw01.E1;
 
 public class ahaCounter {

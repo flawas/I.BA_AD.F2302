@@ -1,7 +1,9 @@
+/*
+ * Copyright Flavio Waser (c) 2023.
+ */
+
 package ch.hslu.ad.sw01.ColorArea;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 
