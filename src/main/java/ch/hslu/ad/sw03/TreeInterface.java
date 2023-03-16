@@ -4,21 +4,22 @@
 
 package ch.hslu.ad.sw03;
 
-public interface TreeInterface {
+public interface TreeInterface <T extends Comparable<T>> {
 
     /*
-     * Einen Node zum Tree hinzufügen
+     * Add a element to the Tree
      */
-    void addNode(TreeNode node);
+    public boolean add(T element);
 
     /*
-     * Einen Node suchen
+     * Remove a element from the tree
      */
-    TreeNode searchNode(TreeNode node);
+    public boolean remove(T element);
 
     /*
-     * Einen Node löschen
+     * Returns if an element exists in the tree
      */
-    void deleteNode(TreeNode node);
+    public boolean has(T element);
+
 
 }
