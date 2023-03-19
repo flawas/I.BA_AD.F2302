@@ -2,7 +2,8 @@
  * Copyright Flavio Waser (c) 2023.
  */
 
-package ch.hslu.ad.sw04;
+package ch.hslu.ad.sw04.hashTable;
+
 
 public interface HashTableInterface {
 

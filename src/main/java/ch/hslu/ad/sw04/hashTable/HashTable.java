@@ -2,16 +2,16 @@
  * Copyright Flavio Waser (c) 2023.
  */
 
-package ch.hslu.ad.sw04;
+package ch.hslu.ad.sw04.hashTable;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashTable implements HashTableInterface{
+public class HashTable implements HashTableInterface {
 
     private Map<Integer, HashTableItem> store = new HashMap<>();
     private static final Logger Log = LogManager.getLogger();

@@ -2,8 +2,10 @@
  * Copyright Flavio Waser (c) 2023.
  */
 
-package ch.hslu.ad.sw04;
+package ch.hslu.ad.sw04.hashTable;
 
+
+import ch.hslu.ad.sw04.hashTable.HashTableItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
