@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="I.BA_AD.F2302" options="-Xlint:all,-processing" />
+      <module name="I.BA_AD.F2302" options="-Xlint:all,-processing --add-exports java.desktop/com.apple.eawt=ALL-UNNAMED" />
     </option>
   </component>
 </project>
