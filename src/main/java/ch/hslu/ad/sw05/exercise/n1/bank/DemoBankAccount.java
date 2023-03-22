@@ -40,6 +40,7 @@ public final class DemoBankAccount {
      */
     private static void waitForCompletion(final Thread[] threads) throws InterruptedException {
         for (final Thread thread : threads) {
+            LOG.debug("Join of Thread " + thread.getName());
             thread.join();
         }
     }
@@ -58,6 +59,8 @@ public final class DemoBankAccount {
         for (int i = 0; i < number; i++) {
             source.add(new BankAccount(amount));
             target.add(new BankAccount());
+            LOG.debug("Bankaccount Source " + i + " Balance " + source.get(i).getBalance());
+            LOG.debug("Bankaccount Target " + i + " Balance " + target.get(i).getBalance());
         }
         final Thread[] threads = new Thread[number * 2];
         for (int i = 0; i < number; i++) {
@@ -65,7 +68,12 @@ public final class DemoBankAccount {
             threads[i + number] = new Thread(new AccountTask(target.get(i), source.get(i), amount));
         }
         for (final Thread thread : threads) {
-            thread.start();
+            LOG.debug("Thread start " + thread.getName());
+            if(thread.isInterrupted() != true){
+                thread.start();
+            } else {
+                thread.isInterrupted();
+            }
         }
         waitForCompletion(threads);
         LOG.info("Bank accounts after transfers");
