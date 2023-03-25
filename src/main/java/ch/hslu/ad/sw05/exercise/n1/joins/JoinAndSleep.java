@@ -24,7 +24,12 @@ import org.apache.logging.log4j.Logger;
 public class JoinAndSleep {
     
     private static final Logger LOG = LogManager.getLogger(JoinAndSleep.class);
-    
+
+    public JoinAndSleep() {
+    }
+
+
+
     /**
      * Main-Demo.
      *
@@ -32,6 +37,15 @@ public class JoinAndSleep {
      * @throws InterruptedException wenn Warten unterbrochen wird.
      */
     public static void main(String[] args) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Thread thread3 = new Thread(new JoinAndSleepTask("Thread 3", 4000));
+        Thread thread2 = new Thread(new JoinAndSleepTask("Thread 2", 3000, thread3));
+        Thread thread1 = new Thread(new JoinAndSleepTask("Thread 1", 2000, thread2));
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
