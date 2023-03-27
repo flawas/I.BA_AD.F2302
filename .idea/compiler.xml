@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="I.BA_AD.F2302" />
+        <module name="oop_maven_template" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="I.BA_AD.F2302" target="17" />
+      <module name="oop_maven_template" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="I.BA_AD.F2302" options="-Xlint:all,-processing --add-exports java.desktop/com.apple.eawt=ALL-UNNAMED" />
+      <module name="oop_maven_template" options="-Xlint:all,-processing" />
     </option>
   </component>
 </project>
