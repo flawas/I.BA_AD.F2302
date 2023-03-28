@@ -48,6 +48,7 @@ public final class RaceHorse implements Runnable {
             startSignal.acquire();
             LOG.info("Rennpferd {} laeuft los...", runThread.getName());
             Thread.sleep(random.nextInt(3000));
+            startSignal.boxready();
         } catch (InterruptedException ex) {
             LOG.debug(ex);
         }

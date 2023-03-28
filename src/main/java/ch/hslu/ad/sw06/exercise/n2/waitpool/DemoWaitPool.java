@@ -33,10 +33,13 @@ public final class DemoWaitPool {
      * @param args not used.
      * @throws InterruptedException wenn das warten unterbrochen wird.
      */
-    public static void main(final String args[]) throws InterruptedException {
+    public static void main(final String[] args) throws InterruptedException {
         final MyTask waiter = new MyTask(LOCK);
         new Thread(waiter).start();
         Thread.sleep(1000);
-        LOCK.notify();
+        // Änderungen: LOCK.notify() in Synchronisierte Klammer
+        synchronized (LOCK){
+            LOCK.notify();
+        }
     }
 }
