@@ -29,6 +29,7 @@ public final class BoundedBuffer<T> implements Buffer<T> {
     private final ArrayDeque<T> queue;
     private final Semaphore putSema;
     private final Semaphore takeSema;
+    private final int maxSize;
 
     /**
      * Erzeugt einen Puffer mit bestimmter Kapazität.
@@ -39,6 +40,7 @@ public final class BoundedBuffer<T> implements Buffer<T> {
         queue = new ArrayDeque<>(n);
         putSema = new Semaphore(n);
         takeSema = new Semaphore(0);
+        maxSize = n;
     }
 
     @Override
@@ -63,26 +65,42 @@ public final class BoundedBuffer<T> implements Buffer<T> {
 
     @Override
     public boolean add(T elem, long millis) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        synchronized (queue){
+            queue.add(elem);
+            return true;
+        }
     }
 
     @Override
     public T remove(long millis) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        synchronized (queue){
+            queue.remove();
+        }
+        return null;
     }
 
     @Override
     public boolean empty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        synchronized (queue){
+            return queue.isEmpty();
+        }
     }
 
     @Override
     public boolean full() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        synchronized (queue){
+            if (queue.size() == maxSize)  {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     @Override
-    public boolean size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int size() {
+        synchronized (queue){
+            return queue.size();
+        }
     }
 }

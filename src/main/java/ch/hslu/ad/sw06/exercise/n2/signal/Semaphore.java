@@ -15,6 +15,9 @@
  */
 package ch.hslu.ad.sw06.exercise.n2.signal;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Ein nach oben nicht begrenztes Semaphor, d.h. der Semaphorenzähler kann
  * unendlich wachsen.
@@ -23,6 +26,8 @@ public final class Semaphore {
 
     private int sema; // Semaphorenzähler
     private int count; // Anzahl der wartenden Threads.
+    private int limit;
+    private static final Logger Log = LogManager.getLogger();
 
     /**
      * Erzeugt ein Semaphore mit 0 Passiersignalen.
@@ -39,6 +44,7 @@ public final class Semaphore {
      */
     public Semaphore(final int permits) throws IllegalArgumentException {
         if (permits < 0) {
+            Log.error(permits + " < 0");
             throw new IllegalArgumentException(permits + " < 0");
         }
         sema = permits;
@@ -53,8 +59,17 @@ public final class Semaphore {
      * @throws IllegalArgumentException wenn Argumente ungültige Werte besitzen.
      */
     public Semaphore(final int permits, final int limit) throws IllegalArgumentException {
-        this(0);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(permits < 0){
+            throw new IllegalArgumentException(permits + " < 0");
+        }
+        if(permits > limit){
+            throw new IllegalArgumentException("permits > limit");
+        }
+        this.limit = limit;
+        this.sema = permits;
+        this.count = 0;
+        Log.debug(this + " wurde erstellt.");
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -66,7 +81,9 @@ public final class Semaphore {
      * wird.
      */
     public synchronized void acquire() throws InterruptedException {
+        Log.debug(this + " hat synchronisierten Block acquire() erreicht");
         while (sema == 0) {
+
             count++;
             this.wait();
             count--;
@@ -76,7 +93,7 @@ public final class Semaphore {
 
     /**
      * Entspricht dem P() Eintritt (Passieren) in einen synchronisierten
-     * Bereich, wobei mitgezählt wird, der wievielte Eintritt es ist.Falls der
+     * Bereich, wobei mitgezählt wird, der wievielte Eintritt es ist. Falls der
      * Zähler null ist wird der Aufrufer blockiert.
      *
      * @param permits Anzahl Passiersignale zum Eintritt.
@@ -84,7 +101,16 @@ public final class Semaphore {
      * wird.
      */
     public synchronized void acquire(final int permits) throws InterruptedException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Log.debug(this + " hat synchronisierten Block acquire(final int permits) erreicht");
+        if(permits < 0){
+            throw new IllegalArgumentException(permits + " < 0");
+        }
+        if(permits > this.limit){
+            throw new IllegalArgumentException(permits + " > limit");
+        }
+        for(int i = 0; i <= permits; i++){
+            this.acquire();
+        }
     }
 
     /**
@@ -92,9 +118,9 @@ public final class Semaphore {
      * Bereiches, wobei ebenfalls mitgezählt wird, wie oft der Bereich verlassen
      * wird.
      */
-    public synchronized void release() {
-        sema++;
-        this.notifyAll();
+    public synchronized void release() throws InterruptedException {
+        Log.debug(this + " hat synchronisierten Block release() erreicht");
+        this.release(1);
     }
 
     /**
@@ -103,8 +129,16 @@ public final class Semaphore {
      *
      * @param permits Anzahl Passiersignale zur Freigabe.
      */
-    public synchronized void release(final int permits) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public synchronized void release(final int permits) throws InterruptedException {
+        Log.debug(this + " hat synchronisierten Block release(final int permits) erreicht");
+        if (permits < 0){
+            throw new IllegalArgumentException(permits + " < 0");
+        }
+        this.sema += permits;
+        if (this.sema > this.limit){
+            this.sema = limit;
+        }
+        this.notifyAll();
     }
 
     /**
