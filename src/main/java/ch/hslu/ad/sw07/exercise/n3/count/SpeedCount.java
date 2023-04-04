@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
  */
 public final class SpeedCount {
 
-    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.exercise.n3.count.SpeedCount.class);
+    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.sw07.exercise.n3.count.SpeedCount.class);
 
     /**
      * Privater Konstruktor.

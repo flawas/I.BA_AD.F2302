@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
  */
 public final class PrimeCheck {
 
-    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.exercise.n3.prime.PrimeCheck.class);
+    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.sw07.exercise.n3.prime.PrimeCheck.class);
 
     /**
      * Privater Konstruktor.
@@ -39,6 +39,7 @@ public final class PrimeCheck {
      * @param args not used.
      */
     public static void main(String[] args) {
+        final long timeStart = System.currentTimeMillis();
         int n = 1;
         while (n <= 100) {
             BigInteger bi = new BigInteger(1024, new Random());
@@ -47,5 +48,7 @@ public final class PrimeCheck {
                 n++;
             }
         }
+        final long timeEnd = System.currentTimeMillis();
+        System.out.println("Verlaufszeit der Schleife: " + (timeEnd - timeStart) + " Millisek.");
     }
 }

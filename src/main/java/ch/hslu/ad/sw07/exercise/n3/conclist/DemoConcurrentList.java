@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger;
  */
 public final class DemoConcurrentList {
 
-    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.exercise.n3.conclist.DemoConcurrentList.class);
+    private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.sw07.exercise.n3.conclist.DemoConcurrentList.class);
 
     /**
      * Privater Konstruktor.
