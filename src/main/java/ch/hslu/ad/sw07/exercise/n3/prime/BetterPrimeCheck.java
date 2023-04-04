@@ -36,8 +36,8 @@ public class BetterPrimeCheck {
         final long timeStart = System.currentTimeMillis();
 
         // Neuer Executor Service erzeugen mit einem CachedThreadPool
-        //final ExecutorService executor = Executors.newCachedThreadPool();
-        final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
+        final ExecutorService executor = Executors.newCachedThreadPool();
+        //final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
 
         // Neue AtomicInteger für die Zählung erzeugen
         AtomicInteger n = new AtomicInteger(1);
@@ -48,13 +48,15 @@ public class BetterPrimeCheck {
             executor.execute( () -> {
                 BigInteger bi = new BigInteger(1024, new Random());
                 if (bi.isProbablePrime(Integer.MAX_VALUE)) {
-                    LOG.info("Thread" + Thread.currentThread().getId() + ": " + bi.toString().substring(0, 40) + "...");
+                    LOG.info("Thread" + Thread.currentThread().getId() + ": " + bi.toString().substring(0, 20) + "...");
                     n.getAndIncrement();
 
                 }
             });
         }
+        LOG.info("Alle Threads beenden...");
         executor.shutdownNow();
+
         // Zeitmessung Stop
         final long timeEnd = System.currentTimeMillis();
         if(executor.awaitTermination(500, TimeUnit.MILLISECONDS)){
