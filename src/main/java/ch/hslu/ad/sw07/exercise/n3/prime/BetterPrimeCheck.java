@@ -36,8 +36,9 @@ public class BetterPrimeCheck {
         final long timeStart = System.currentTimeMillis();
 
         // Neuer Executor Service erzeugen mit einem CachedThreadPool
-        final ExecutorService executor = Executors.newCachedThreadPool();
+        //final ExecutorService executor = Executors.newCachedThreadPool();
         //final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
+        final ExecutorService executor = Executors.newFixedThreadPool(64);
 
         // Neue AtomicInteger für die Zählung erzeugen
         AtomicInteger n = new AtomicInteger(1);
@@ -59,7 +60,7 @@ public class BetterPrimeCheck {
 
         // Zeitmessung Stop
         final long timeEnd = System.currentTimeMillis();
-        if(executor.awaitTermination(500, TimeUnit.MILLISECONDS)){
+        if(executor.awaitTermination(5000, TimeUnit.MILLISECONDS)){
             LOG.info("Anzahl Zahlen: " + n);
             LOG.info("Verlaufszeit der Schleife: " + (timeEnd - timeStart) + " Millisek.");
         }
