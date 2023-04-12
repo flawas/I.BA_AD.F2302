@@ -52,6 +52,9 @@ public final class DemoBankAccount {
      * @throws InterruptedException wenn Warten unterbrochen wird.
      */
     public static void main(String[] args) throws InterruptedException {
+        // Zeitmessung Start
+        final long timeStart = System.currentTimeMillis();
+
         final ArrayList<BankAccount> source = new ArrayList<>();
         final ArrayList<BankAccount> target = new ArrayList<>();
         final int amount = 100000;
@@ -76,9 +79,15 @@ public final class DemoBankAccount {
             }
         }
         waitForCompletion(threads);
+
+        // Zeitmessung Stop
+        final long timeEnd = System.currentTimeMillis();
+
         LOG.info("Bank accounts after transfers");
         for (int i = 0; i < number; i++) {
             LOG.info("source({}) = {}; target({}) = {};", i, source.get(i).getBalance(), i, target.get(i).getBalance());
         }
+
+        LOG.info("Verlaufszeit: " + (timeEnd - timeStart) + " Millisek.");
     }
 }
