@@ -1,40 +1,19 @@
 /*
- * Copyright 2023 Hochschule Luzern - Informatik.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright Flavio Waser (c) 2023.
  */
+
 package ch.hslu.ad.sw07.exercise.n3.conclist;
 
-import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/**
- * Demonstration einer synchrnisierten List mit n Producer und m Consumer.
- */
-public final class DemoConcurrentList {
+import java.util.*;
+import java.util.concurrent.*;
+
+public class DemoBlockingQueue {
 
     private static final Logger LOG = LogManager.getLogger(ch.hslu.ad.sw07.exercise.n3.conclist.DemoConcurrentList.class);
 
-    /**
-     * Privater Konstruktor.
-     */
-    private DemoConcurrentList() {
-    }
 
     /**
      * Main-Demo.
@@ -43,8 +22,7 @@ public final class DemoConcurrentList {
      * @throws java.util.concurrent.ExecutionException bei Excecution-Fehler.
      */
     public static void main(final String args[]) throws InterruptedException, ExecutionException {
-        //final List<Integer> list = new LinkedList<>();
-        final List<Integer> list = Collections.synchronizedList(new LinkedList<>());
+        final Queue<Integer> list = new LinkedBlockingQueue<>();
         final ExecutorService executor = Executors.newCachedThreadPool();
         final List<Future<Long>> futures = new ArrayList<>();
         for (int i = 0; i < 3; i++) {

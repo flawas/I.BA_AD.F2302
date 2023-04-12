@@ -15,6 +15,7 @@
  */
 package ch.hslu.ad.sw07.exercise.n3.conclist;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -23,7 +24,7 @@ import java.util.concurrent.Callable;
  */
 public final class Producer implements Callable<Long> {
 
-    private final List<Integer> list;
+    private final Collection<Integer> list;
     private final int maxRange;
 
     /**
@@ -31,7 +32,7 @@ public final class Producer implements Callable<Long> {
      * @param list Queue zum Speichern der Integer-Werte.
      * @param max Anzahl Integer-Werte.
      */
-    public Producer(final List<Integer> list, final int max) {
+    public Producer(final Collection<Integer> list, final int max) {
         this.list = list;
         this.maxRange = max;
     }
@@ -43,7 +44,11 @@ public final class Producer implements Callable<Long> {
      */
     @Override
     public Long call() throws Exception {
-        return null;
+        long sum = 0;
+        for (int i = 1; i <= maxRange; i++) {
+            sum += i;
+            list.add(i); }
+        return sum;
     }
 
 }

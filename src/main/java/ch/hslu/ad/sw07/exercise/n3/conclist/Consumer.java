@@ -15,6 +15,8 @@
  */
 package ch.hslu.ad.sw07.exercise.n3.conclist;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -23,13 +25,13 @@ import java.util.concurrent.Callable;
  */
 public final class Consumer implements Callable<Long> {
 
-    private final List<Integer> list;
+    private final Collection<Integer> list;
 
     /**
      * Erzeugt einen Konsumenten, der soviel Integer-Werte ausliest, wie er nur kann.
      * @param list Queue zum Lesen der Integer-Werte.
      */
-    public Consumer(final List<Integer> list) {
+    public Consumer(final Collection<Integer> list) {
         this.list = list;
     }
 
@@ -40,6 +42,11 @@ public final class Consumer implements Callable<Long> {
      */
     @Override
     public Long call() throws Exception {
-        return null;
+        long sum = 0;
+        Iterator<Integer> iterable = list.iterator();
+        while (iterable.hasNext()) {
+            sum += iterable.next();
+        }
+        return sum;
     }
 }
