@@ -20,6 +20,8 @@ package ch.hslu.ad.sw07.exercise.n3.count;
  */
 public final class SynchronizedCounter implements Counter {
 
+    private int counter = 0;
+
     /**
      * Erzeugt einen Zähler mit Zählerstand 0.
      */
@@ -31,7 +33,7 @@ public final class SynchronizedCounter implements Counter {
      */
     @Override
     public void increment() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        counter++;
     }
 
     /**
@@ -39,7 +41,7 @@ public final class SynchronizedCounter implements Counter {
      */
     @Override
     public void decrement() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        counter--;
     }
 
     /**
@@ -47,6 +49,6 @@ public final class SynchronizedCounter implements Counter {
      */
     @Override
     public int get() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return counter;
     }
 }

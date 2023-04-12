@@ -41,12 +41,15 @@ public final class SpeedCount {
      * @return Dauer des Tests in mSec.
      */
     public static long speedTest(Counter counter, int counts, int tester) {
+        final long timeStart = System.currentTimeMillis();
         final ExecutorService executor = Executors.newCachedThreadPool();
         for (int i = 0; i < tester; i++) {
             executor.submit(new CountTask(counter, counts));
         }
         long duration = -1L;
+        final long timeEnd = System.currentTimeMillis();
         executor.shutdown();
+        LOG.info("Verlaufszeit: " + counter.getClass() + " " + (timeEnd - timeStart) + " Millisek.");
         return duration;
     }
 
@@ -57,7 +60,7 @@ public final class SpeedCount {
     public static void main(final String args[]) {
         final int passes = 1;
         final int tester = 1;
-        final int counts = 1_000;
+        final int counts = 1000;
         final Counter counterSync = new SynchronizedCounter();
         long sumSync = 0;
         for (int i = 0; i < passes; i++) {
