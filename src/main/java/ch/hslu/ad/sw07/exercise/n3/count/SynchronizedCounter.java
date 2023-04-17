@@ -32,7 +32,7 @@ public final class SynchronizedCounter implements Counter {
      * see ch.hslu.ad.exercise.sw07.count.Counter#increment()
      */
     @Override
-    public void increment() {
+    public synchronized void increment() {
         counter++;
     }
 
@@ -40,7 +40,7 @@ public final class SynchronizedCounter implements Counter {
      * see ch.hslu.ad.exercise.sw07.count.Counter#decrement()
      */
     @Override
-    public void decrement() {
+    public synchronized void decrement() {
         counter--;
     }
 
@@ -48,7 +48,7 @@ public final class SynchronizedCounter implements Counter {
      * see ch.hslu.ad.exercise.sw07.count.Counter#get()
      */
     @Override
-    public int get() {
+    public synchronized int get() {
         return counter;
     }
 }

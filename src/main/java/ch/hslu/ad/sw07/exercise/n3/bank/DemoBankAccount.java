@@ -48,7 +48,7 @@ public final class DemoBankAccount {
 
         final ArrayList<BankAccount> source = new ArrayList<>();
         final ArrayList<BankAccount> target = new ArrayList<>();
-        final int amount = 100_000;
+        final int amount = 10_000_000;
         final int number = 5;
         for (int i = 0; i < number; i++) {
             source.add(new BankAccount(amount));
