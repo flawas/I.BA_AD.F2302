@@ -58,18 +58,20 @@ public final class SpeedCount {
      * @param args not used.
      */
     public static void main(final String args[]) {
-        final int passes = 1;
+        final int passes = 10;
         final int tester = 1;
         final int counts = 1000;
         final Counter counterSync = new SynchronizedCounter();
         long sumSync = 0;
         for (int i = 0; i < passes; i++) {
             sumSync += speedTest(counterSync, counts, tester);
+            LOG.debug(sumSync);
         }
         final Counter counterAtom = new AtomicCounter();
         long sumAtom = 0;
         for (int i = 0; i < passes; i++) {
             sumAtom += speedTest(counterAtom, counts, tester);
+            LOG.info(sumAtom);
         }
         if (counterSync.get() == 0) {
             LOG.info("Sync counter ok");
