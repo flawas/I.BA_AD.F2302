@@ -7,8 +7,6 @@ package ch.hslu.ad.sw07.exercise.n3.prime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -29,6 +27,9 @@ public class PrimeCheckCallDemo {
 
         while(working){
             executor.execute( () -> {
+                if(counter.get() == NUM_OF_PRIME){
+                    return;
+                }
                 PrimeCheckCallable primeCheckCallable = new PrimeCheckCallable();
                 try {
                     if((counter.get() <= NUM_OF_PRIME) && (primeCheckCallable.call())){
@@ -36,7 +37,7 @@ public class PrimeCheckCallDemo {
                         counter.getAndIncrement();
                     }
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    LOG.error(e.getMessage());
                 }
             });
             if(counter.get() == NUM_OF_PRIME){

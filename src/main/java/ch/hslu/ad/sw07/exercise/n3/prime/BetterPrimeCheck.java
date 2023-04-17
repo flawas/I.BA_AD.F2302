@@ -26,11 +26,10 @@ public class BetterPrimeCheck {
      * Main-Demo.
      *
      * @param args not used.
-     * @return
      */
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 
-        LOG.info("Maximal verfügabre Ressourcen: " + Runtime.getRuntime().availableProcessors());
+        LOG.info("Maximal verfügbare Ressourcen: " + Runtime.getRuntime().availableProcessors());
 
         // Zeitmessung Start
         final long timeStart = System.currentTimeMillis();

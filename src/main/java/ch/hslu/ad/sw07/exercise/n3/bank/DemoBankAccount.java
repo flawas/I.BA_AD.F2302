@@ -65,12 +65,14 @@ public final class DemoBankAccount {
         // Zeitmessung Stop
         final long timeEnd = System.currentTimeMillis();
 
-        LOG.debug("Executor Service: Terminierung warten...");
+        // ...warten bis alle Transaktionen abgeschlossen sind.
+        LOG.debug("Executor Service: Terminierung abwarten...");
         executorService.awaitTermination(5, TimeUnit.SECONDS);
         LOG.debug("Executor Service: Beenden...");
         executorService.shutdown();
-        LOG.debug("Executor Service: Status Beendet");
-        // ...warten bis alle Transaktionen abgeschlossen sind.
+        if (executorService.isShutdown()) LOG.debug("Executor Service: Status Beendet");
+
+        // Log ausgeben
         LOG.info("Bank accounts after transfers");
         for (int i = 0; i < number; i++) {
             LOG.info("source({}) = {}; target({}) = {};", i, source.get(i).getBalance(), i, target.get(i).getBalance());
