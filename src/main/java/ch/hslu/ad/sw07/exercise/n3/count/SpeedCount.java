@@ -65,13 +65,11 @@ public final class SpeedCount {
         long sumSync = 0;
         for (int i = 0; i < passes; i++) {
             sumSync += speedTest(counterSync, counts, tester);
-            LOG.debug(sumSync);
         }
         final Counter counterAtom = new AtomicCounter();
         long sumAtom = 0;
         for (int i = 0; i < passes; i++) {
             sumAtom += speedTest(counterAtom, counts, tester);
-            LOG.info(sumAtom);
         }
         if (counterSync.get() == 0) {
             LOG.info("Sync counter ok");

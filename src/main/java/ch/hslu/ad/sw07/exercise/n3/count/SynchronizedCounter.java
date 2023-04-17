@@ -20,12 +20,13 @@ package ch.hslu.ad.sw07.exercise.n3.count;
  */
 public final class SynchronizedCounter implements Counter {
 
-    private int counter = 0;
+    private int counter;
 
     /**
      * Erzeugt einen Zähler mit Zählerstand 0.
      */
     public SynchronizedCounter() {
+        this.counter = 0;
     }
 
     /**
