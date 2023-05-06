@@ -13,7 +13,6 @@ import java.util.Arrays;
  * Übung: Grundlagen, einfache Sortieralgorithmen (A1)
  * Aufgabe: Direktes Einfügen
  *
- * @author Fabian Gröger
  * @version 25.04.2018
  */
 public class Sort {

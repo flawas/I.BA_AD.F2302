@@ -16,7 +16,6 @@ import static org.junit.Assert.assertFalse;
  * Übung: Grundlagen, einfache Sortieralgorithmen (A1)
  * Aufgabe: Direktes Einfügen
  *
- * @author Fabian Gröger
  * @version 25.04.2018
  */
 public class SortTest {
