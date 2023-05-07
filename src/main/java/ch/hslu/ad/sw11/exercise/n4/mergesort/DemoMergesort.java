@@ -39,13 +39,18 @@ public final class DemoMergesort {
      * @param args not used.
      */
     public static void main(final String[] args) {
-        final int size = 300_000_000;
+        final int size = 900_000_000;
         final int[] array = ThreadLocalRandom.current().ints(size).toArray();
         final ForkJoinPool pool = new ForkJoinPool();
         final MergesortTask sortTask = new MergesortTask(array);
+        long timeStartTask = System.currentTimeMillis();
         pool.invoke(sortTask);
-        LOG.info("Conc. Mergesort : {} sec.", '?');
+        long timeEndTask = System.currentTimeMillis();
+        LOG.info("Conc. Mergesort : {} sec.", (timeEndTask - timeStartTask) / 1000);
+
+        long timeStartRec = System.currentTimeMillis();
         MergesortRecursive.mergeSort(array);
-        LOG.info("MergesortRec.   : {} sec.", '?');
+        long timeEndRec = System.currentTimeMillis();
+        LOG.info("MergesortRec.   : {} sec.", (timeEndRec - timeStartRec) / 1000);
     }
 }
